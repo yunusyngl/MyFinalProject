@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Entities.Concrete
 {   // Çıplak class kalmasın
-    public class Category:IEntity
+    public class Category:IEntity // bu da bir diğer nesne 
     {   
         public int CategoryId { get; set; }
         public string CategoryName { get; set; }
