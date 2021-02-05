@@ -39,7 +39,7 @@ namespace DataAccess.Concrete.InMemory
                     productToDelete = p;
                 }
             }*/
-            //SingleOrDefault : tek bir eleman bulmaya yarar.. bu yapı product ı tek tek dolaşmaya yarar.. "=>" bu işarete lambda deniyor.
+            //SingleOrDefault : tek bir eleman bulmaya yarar.. bu yapı product ı tek tek dolaşmaya yarar.. "=>" bu işarete lambda deniyor. aşağıdaki LINQ kodu yukarıdaki kod yerine yazılmıştır.
             Product productToDelete = _products.SingleOrDefault(p => p.ProductId == product.ProductId);// Burda yukarıdaki formulü LINQ(Language Integrated Query)-(dile gömülü sorgulama) ile yazdık aslında. LINQ C# ı diğer dilerden daha güçlü hale getiren bir yapıdır. LINQ ile yukarıdaki liste yapılı yapıları aynen sql gibi sorgulayabiliriz
 
             _products.Remove(productToDelete);
@@ -64,7 +64,7 @@ namespace DataAccess.Concrete.InMemory
 
         public List<Product>GetAllByCategory(int categoryId) 
         {
-            return _products.Where(p => p.CategoryId==categoryId).ToList();
+            return _products.Where(p => p.CategoryId==categoryId).ToList(); // where içindeki şarta uyan bütün elemanları yeni bir liste haline getirip onu döndürür  
         }
 
         public List<Product> GetAll(Expression<Func<Product, bool>> filter = null)

@@ -9,8 +9,8 @@ using System.Text;
 namespace Business.Concrete
 {
     public class ProductManager : IProductService
-    {
-        IProductDal _productDal;//injection
+    {   // bir iş sınıfı başka sınıfları new lemez. bunun için injection yapıyoruz. Soyut nesne ile etkileşime gececez
+        IProductDal _productDal;//injection // ampulden  generate constructor (yapı oluştur) productManager(productDal) -- yani productmanagerin altında productdal yapısı oluştur
 
         public ProductManager(IProductDal productDal)
         {
@@ -19,10 +19,10 @@ namespace Business.Concrete
 
         public List<Product> GetAll()
         {
-            //İş kodları
-            //Yetkisi var mı?
+            //İş kodlarını geçiyorsa veriye erişim vermeli
+            //Yetkisi var mı? burda if kodları var diyelim ki geçti veri tabanına diyor ki bana ürünleri verebilirsin çünkü ben kurallardan geçtim
 
-            return _productDal.GetAll();
+            return _productDal.GetAll(); // iş kodlarından geçiyorsa _productDal daki getAll ı çağırabilirsin
         }
 
         public List<Product> GetAllByCategoryId(int id)
