@@ -6,7 +6,7 @@ using System.Text;
 
 namespace DataAccess.Concrete.EntityFramework
 {   //Context : Db tabloları ile projede yer alan classları bağlamak
-    class NorthwinContext :DbContext // burda tam olarak dememiz gereken benim veri tabanım burda yer alıyor demek
+    public class NorthwinContext :DbContext // burda tam olarak dememiz gereken benim veri tabanım burda yer alıyor demek
     {
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder) // veri tabanının hangi tablo ile ilişkinin kurulacağı alan
         {
@@ -18,5 +18,7 @@ namespace DataAccess.Concrete.EntityFramework
         public DbSet<Category> Categories { get; set; }
 
         public DbSet<Customer> Customers { get; set; }
+
+        public DbSet<Order> Orders { get; set; }
     }
 }

@@ -1,4 +1,5 @@
-﻿using Entities.Abstract;
+﻿//using Entities.Abstract;
+using Core.Entities;//Core değişikliği ile ekledik
 using System;
 using System.Collections.Generic;
 using System.Text;

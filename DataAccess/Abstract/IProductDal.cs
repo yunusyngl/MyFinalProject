@@ -1,11 +1,13 @@
-﻿using Entities.Concrete;
+﻿using Core.DataAccess;// Core değişikliği ile geldi
+using Entities.Concrete;
+using Entities.DTOs;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace DataAccess.Abstract
-{
-    public interface IProductDal : IEntityRepository<Product> //interface public değil ama operasyonları yani add, update, delete bunlar publix
+{   //interface public değil ama operasyonları yani add, update, delete bunlar publix
+    public interface IProductDal : IEntityRepository<Product> // "public interface IProductDal" için "IEntityRepository" i product için yapılandırdın demek
     {
         // aşağıdaki satırda product farklı bir katmanda olduğundan eklediğimizde altı çizili gelecektir. Bu tablo hangi katmanda ise onu referans göstermeliyiz.
         // Bu yüzden solda çıkan ampule tıkla -- Add referance to Entities--Using Entities.Concrete;  // kısacası başka katmanı kullanacaksak referans veririz
@@ -18,6 +20,6 @@ namespace DataAccess.Abstract
 
         List<Product> GetAllByCategory(int categoryId); // bütün ürünleri categorilere göre filtrele*/
 
-
+        List<ProductDetailDto> GetProductDetailDtos();
     }
 }
