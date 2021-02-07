@@ -4,7 +4,9 @@ using DataAccess.Concrete.InMemory;
 using System;
 
 namespace ConsoleUI
-{   //SOLID : Bu yaptığımız yazılıma yeni bir özellik ekliyorsak mevcuttaki hiçç bir koda dokunmazsın ama biz bunu EntityFramework ile yaptık 
+{
+
+    //Burda yaptığımız işlem SOLID in O harfi --Open Closed Principle -- bu şe demek yaptığın yazılıma yeni bir özellik ekliyorsan mevcuttaki hiç bir koduna dokunamazsın --bizde sistemi InMemory yerine EntityFramework sistemine geçirdik -- yeni bir klasör oluşturup kendi kodlarını yazdık 
     class Program
     {
         static void Main(string[] args)
