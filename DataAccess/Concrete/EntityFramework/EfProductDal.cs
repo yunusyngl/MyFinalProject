@@ -11,16 +11,17 @@ using System.Text;
 
 namespace DataAccess.Concrete.EntityFramework
 {
-    public class EfProductDal : EfEntityRepositoryBase<Product, NorthwinContext>, IProductDal
+    public class EfProductDal : EfEntityRepositoryBase<Product, NorthwinContext>, IProductDal//IProductDal demek veri tabanı ile ilgili işler yapılacak demek// bunların hepsi EfEntityRepositoryBase de var. bunları product ve NortwinContex için çalıştır
+        // yani IProductDal diyor ki az önce kızdın ama bendeki özeliklerin hepsi EfEntityRepositoryBase de var o da beni inherit ediyor demek istiyor  
     {   //NuGet: paket kodların konulduğu yapı .Net içindeki EntityFramework 
         public List<ProductDetailDto> GetProductDetailDtos()
         {
             using (NorthwinContext context= new NorthwinContext())
             {
-                var result = from p in context.Products
+                var result = from p in context.Products//ürünlere p categorilere c deyip bunları join yapıyoruz 
                              join c in context.Categories
-                             on p.CategoryId equals c.CategoryId
-                             select new ProductDetailDto { ProductId = p.ProductId, ProductName = p.ProductName, CategoryName = c.CategoryName, UnitsInStock = p.UnitsInStock };
+                             on p.CategoryId equals c.CategoryId // p deki categoryId iel c deki categoryId eşit ise bunları join yap
+                             select new ProductDetailDto { ProductId = p.ProductId, ProductName = p.ProductName, CategoryName = c.CategoryName, UnitsInStock = p.UnitsInStock }; // seçilimi ilgili tabloların ilgili yerlerinden getir diyoruz burda
                 return result.ToList();
             }
         }
