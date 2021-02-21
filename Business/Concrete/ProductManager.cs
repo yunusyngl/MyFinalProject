@@ -1,11 +1,9 @@
 ﻿using Business.Abstract;
+using Core.Utilities.Results;
 using DataAccess.Abstract;
-using DataAccess.Concrete.InMemory;
 using Entities.Concrete;
 using Entities.DTOs;
-using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace Business.Concrete
 {
@@ -18,10 +16,12 @@ namespace Business.Concrete
             _productDal = productDal;
         }
 
-        public IResult Add(Product product)
+        public IResult Add(Product product)// normalde "public void" idi burası bir tip döndürmüyor.. void döndürüyor. void demek ben özel bir tip döndürmüyorum
         {
             //business codes
             _productDal.Add(product);
+            return new Result(true, "ürün eklendi");//Projelerimizde başarı dönüşümlerin constractor ile yapacağız bu nedenle Result.cs de sadece get kullanıp kısıtladık. böylelikle kodların okunurluğu da artacaktır.
+           
         }
 
         public List<Product> GetAll()
@@ -52,9 +52,6 @@ namespace Business.Concrete
             return _productDal.GetProductDetailDtos();
         }
 
-        void IProductService.Add(Product product)
-        {
-            throw new NotImplementedException();
-        }
+        
     }
 }
