@@ -21,5 +21,6 @@ namespace DataAccess.Abstract
         List<Product> GetAllByCategory(int categoryId); // bütün ürünleri categorilere göre filtrele*/
 
         List<ProductDetailDto> GetProductDetailDtos();
+        List<Product> GetProductDetails();
     }
 }
