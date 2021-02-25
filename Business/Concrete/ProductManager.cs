@@ -60,7 +60,7 @@ namespace Business.Concrete
         public IDataResult<List<ProductDetailDto>> GetProductDetails()
         {
 
-            return new SuccessDataResult<List<ProductDetailDto>>(_productDal.GetProductDetails ());
+            return new SuccessDataResult<List<ProductDetailDto>>(_productManager.GetProductDetailsDtos());
         }
 
         
